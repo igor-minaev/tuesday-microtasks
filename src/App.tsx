@@ -53,14 +53,17 @@ function App() {
 
 
     function removeTask(todolistId: string, id: string) {
-        let filteredTasks = tasks[todolistId].filter(t => t.id != id);
-        setTasks({...tasks, [todolistId]: filteredTasks});
+        // let filteredTasks = tasks[todolistId].filter(t => t.id != id);
+        // setTasks({...tasks, [todolistId]: filteredTasks});
+        setTasks({...tasks, [todolistId]: tasks[todolistId].filter(t => t.id != id)});
     }
 
     function addTask(todolistId: string, title: string) {
+        // let task: TaskType = {id: v1(), title: title, isDone: false};
+        // let newTasks = [task, ...tasks[todolistId]];
+        // setTasks({...tasks, [todolistId]: newTasks});
         let task: TaskType = {id: v1(), title: title, isDone: false};
-        let newTasks = [task, ...tasks[todolistId]];
-        setTasks({...tasks, [todolistId]: newTasks});
+        setTasks({...tasks, [todolistId]: [task, ...tasks[todolistId]]});
     }
 
     function changeStatus(todolistId: string, taskId: string, isDone: boolean) {
